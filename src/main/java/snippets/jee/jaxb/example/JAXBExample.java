@@ -29,15 +29,15 @@ public class JAXBExample {
         //Marshal Course object and write to the StringWriter
         marshaller.marshal(course, stringWriter);
         //Get String from the StringWriter
-        String courseXML = stringWriter.getBuffer().toString();
+        String courseXMLString = stringWriter.getBuffer().toString();
         stringWriter.close();
         //Print course XML
-        System.out.println(courseXML);
+        System.out.println(courseXMLString);
 
         //Now unmarshal courseXML to create Course object
         Unmarshaller unmarshaller = context.createUnmarshaller();
         //Create StringReader from courseXml
-        StringReader stringReader = new StringReader(courseXML);
+        StringReader stringReader = new StringReader(courseXMLString);
         //Create StreamSource which will be used by JAXB unmarshaller
         StreamSource streamSource = new StreamSource(stringReader);
         Course unmarshalledCourse = unmarshaller.unmarshal(streamSource, Course.class).getValue();
