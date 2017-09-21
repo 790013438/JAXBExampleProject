@@ -1,4 +1,4 @@
-# JAXB Exmaple Project
+# JAXB Example Project
 ## Course and Teacher
 
 ```java
