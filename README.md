@@ -35,33 +35,34 @@ public class Course {
 - We are not annotating the Teacher class with JAXB because we are not going to marshal it directly. It will be marshalled by JAXB when an instance of Course is marshalled.  Let's create a class with the main method.  Create the JAXBExample class
 
 ```java
-//Create XML from Java object and then vice versa
-public static void doJAXBXml() throws Exception {
-    Course course = new Course(1,"Course-1", 5);
-    course.setTeacher(new Teacher(1, "Teacher-1"));
-    JAXBContext context = JAXBContext.newInstance(Course.class);
-    //Marshall Java object to XML
-    Marshaller marshaller = context.createMarshaller();
-    //Set option to format generated XML
-    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
-    true);
-    StringWriter stringWriter = new StringWriter();
-    //Marshal Course object and write to the StringWriter
-    marshaller.marshal(course, stringWriter);
-    //Get String from the StringWriter
-    String courseXml = stringWriter.getBuffer().toString();
-    stringWriter.close();
-    //Print course XML
-    System.out.println(courseXml);
-    //Now unmarshall courseXML to create Course object
-    Unmarshaller unmarshaller = context.createUnmarshaller();
-    //Create StringReader from courseXml
-    StringReader stringReader = new StringReader(courseXml);
-    //Create StreamSource which will be used by JAXB unmarshaller
-    StreamSource streamSource = new StreamSource(stringReader);
-    Course unmarshalledCourse =
-    unmarshaller.unmarshal(streamSource, Course.class).getValue();
-    System.out.println("-----------------\nUnmarshalled course name - " + unmarshalledCourse.getName());
-    stringReader.close();
-}
+    //Create XML from Java object and then vice versa
+    public static void doJAXBXml () throws Exception {
+        Course course = new Course(1, "Coruse-1", 5);
+        course.setTeacher(new Teacher(1, "Teacher-1"));
+
+        JAXBContext context = JAXBContext.newInstance(Course.class);
+
+        //Marshal Java object to XML
+        Marshaller marshaller = context.createMarshaller();
+        //Set option to format generated XML
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        StringWriter stringWriter = new StringWriter();
+        //Marshal Course object and write to the StringWriter
+        marshaller.marshal(course, stringWriter);
+        //Get String from the StringWriter
+        String courseXMLString = stringWriter.getBuffer().toString();
+        stringWriter.close();
+        //Print course XML
+        System.out.println(courseXMLString);
+
+        //Now unmarshal courseXML to create Course object
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        //Create StringReader from courseXml
+        StringReader stringReader = new StringReader(courseXMLString);
+        //Create StreamSource which will be used by JAXB unmarshaller
+        StreamSource streamSource = new StreamSource(stringReader);
+        Course unmarshalledCourse = unmarshaller.unmarshal(streamSource, Course.class).getValue();
+        System.out.println("--------------------------\nUnmarshalled course name - " + unmarshalledCourse.getName());
+        stringReader.close();
+    }
 ```
