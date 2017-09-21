@@ -30,7 +30,7 @@ public class Course {
 @XmlRootElement(name="school_course")
 ```
 - The id field is marked as an attribute of the root element. You don't have to mark fields specifically as elements if there are public getters/setters for them. However, if you want to set additional attributes, then you need to annotate them with @ XmlElement. For example, we have specified namespace for the name element/field.  The credits field is not annotated, but it will still be marshalled as an XML element.
-# JAXB Exmaple Project
+# JAXB Example Project
 ## Course and Teacher
 
 ```java
