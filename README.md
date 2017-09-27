@@ -66,3 +66,8 @@ public class Course {
         stringReader.close();
     }
 ```
+## json
+```java
+```
+[这里](https://github.com/790013438/JAXBExampleProject/tree/json%23marshal)[代码](https://github.com/790013438/JAXBExampleProject/blob/json%23marshal/src/main/java/snippets/jee/jaxb/example/JAXBExample.java)
+[项目]分支(https://github.com/790013438/JAXBExampleProject/network)
