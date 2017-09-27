@@ -14,6 +14,7 @@ public class JAXBExample {
 
     public static void main (String... args) throws Exception {
         doJAXBXml();
+        doJAXBJson();
     }
 
     //Create XML from Java object and then vice versa
@@ -53,7 +54,7 @@ public class JAXBExample {
         Course course = new Course(1, "Course-1", 5);
         course.setTeacher(new Teacher(1, "Teacher-1"));
         
-        JAXBContext context = JAXBContext.newInstance(Class.class);
+        JAXBContext context = JAXBContext.newInstance(Course.class);
         
         //Marshl Java object to JSON
         Marshaller marshaller = context.createMarshaller();
